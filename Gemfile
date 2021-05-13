@@ -44,6 +44,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'orderly'
   gem 'simplecov'
+  gem 'bcrypt', '~> 3.1.7'
 end
 
 group :development do
