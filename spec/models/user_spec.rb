@@ -8,9 +8,4 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of :email }
     it { should validate_presence_of :about_me}
   end
-
-  describe 'relationships' do
-    it {should have_many :drives}
-    it {should have_many :drive_days}
-  end
 end
