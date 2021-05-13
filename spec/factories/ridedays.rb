@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :driveday do
-    drives { nil }
+  factory :rideday do
+    drive { nil }
     day_of_week { "MyString" }
   end
 end

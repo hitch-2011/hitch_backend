@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :drife do
+  factory :ride do
     user { nil }
     origin { "MyString" }
     destination { "MyString" }

@@ -1,10 +1,11 @@
 class User < ApplicationRecord
-  has_many :drives, dependent: :destroy
-  has_many :drive_days, dependant: :destroy
+  has_many :friends
+  has_many :rides, dependent: :destroy
+  validates :password, presence: { require: true }
+  validates :password, confirmation: true
   validates :email, uniqueness: true, presence: true
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :make, presence: true
-  validates :model, presence: true
-  validates :year, presence: true
+  validates :about_me, presence: true
   before_save { email.try(:downcase!) }
+  has_secure_password
 end
