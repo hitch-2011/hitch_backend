@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Driveday, type: :model do
+RSpec.describe Rideday, type: :model do
   describe 'relationships' do
-    it {should belong_to :drive}
+    it {should belong_to :ride}
   end
 
   describe 'validations' do

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :friends
-  has_many :drives, dependent: :destroy
+  has_many :rides, dependent: :destroy
   validates :password, presence: { require: true }
   validates :password, confirmation: true
   validates :email, uniqueness: true, presence: true
