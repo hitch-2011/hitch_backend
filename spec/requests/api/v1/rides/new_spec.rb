@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'rides' do
+describe 'New Rides' do
   it 'can create a ride ' do
     user        = create(:user)
     ride_params = {
