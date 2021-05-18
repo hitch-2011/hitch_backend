@@ -1,6 +1,7 @@
 class ProfileSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :email,
+  attributes :fullname,
+              :email,
              :about_me
 
   attribute :rides do |object|

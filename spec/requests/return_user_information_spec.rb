@@ -19,7 +19,9 @@ RSpec.describe "Users API Endpoints" do
       check_hash_structure(profile_details[:data], :type, String)
       expect(profile_details[:data][:type]).to eq("profile")
       check_hash_structure(profile_details[:data][:attributes], :email, String)
+      check_hash_structure(profile_details[:data][:attributes], :fullname, String)
       expect(profile_details[:data][:attributes][:email]).to eq("#{user1.email}")
+      expect(profile_details[:data][:attributes][:fullname]).to eq("#{user1.fullname}")
       check_hash_structure(profile_details[:data][:attributes], :email, String)
       check_hash_structure(profile_details[:data][:attributes], :about_me, String)
       expect(profile_details[:data][:attributes][:about_me]).to eq("#{user1.about_me}")
@@ -40,6 +42,7 @@ RSpec.describe "Users API Endpoints" do
     check_hash_structure(profile_details[:data][:attributes], :friends, Hash)
       profile_details[:data][:attributes][:friends][:data].each do |ref|
         check_hash_structure(ref[:attributes], :email, String)
+        check_hash_structure(ref[:attributes], :fullname, String)
         check_hash_structure(ref[:attributes], :about_me, String)
         check_hash_structure(ref, :type, String)
         check_hash_structure(ref, :id, String)
