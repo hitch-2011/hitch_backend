@@ -4,4 +4,5 @@ class Friend < ApplicationRecord
 
   validates :user, presence: true
   validates :friend, presence: true
+  enum status: [:default, :pending, :denied, :approved]
 end
