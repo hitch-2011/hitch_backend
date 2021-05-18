@@ -8,4 +8,15 @@ class User < ApplicationRecord
   validates :about_me, presence: true
   before_save { email.try(:downcase!) }
   has_secure_password
+
+  def pluck_friend_id
+    Ride.where(user_id: pluck(self))
+  end
+
+  def pluck(user)
+    array = []
+    array << user.id
+    array << user.friends.pluck(:friend_id)
+    array.flatten
+  end
 end
