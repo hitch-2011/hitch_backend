@@ -4,7 +4,8 @@ class ProfileSerializer
              :about_me
 
   attribute :rides do |object|
-    RideSerializer.new(object.rides)
+    rides = object.pluck_friend_id
+    RideSerializer.new(rides)
   end
 
   attribute :friends do |object|
