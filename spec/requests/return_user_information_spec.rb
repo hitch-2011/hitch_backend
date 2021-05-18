@@ -66,13 +66,57 @@ RSpec.describe "Users API Endpoints" do
       friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
       friend = Friend.create!(user_id: user1.id, friend_id: user3.id)
       trip = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user1.id )
-      trip2 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user1.id )
+      trip2 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user3.id )
       get "/api/v1/users/#{user1.id}"
       expect(response).to be_successful
       profile_details = JSON.parse(response.body, symbolize_names:true)
       expect(profile_details[:data][:attributes][:rides][:data]).to be_an(Array)
+      expect(profile_details[:data][:attributes][:rides][:data].count).to eq(2)
+    end
+
+
+    it 'does not grab other rides' do
+      user1 = User.create!(email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
+      user2 = User.create!(email: "jake@gmail.com", password: "password", about_me: "I like driving.")
+      user3 = User.create!(email: "cydnee@gmail.com", password: "password", about_me: "I like driving.")
+      user4= User.create!(email: "differnt@gmail.com", password: "password", about_me: "I like driving.")
+      friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
+      friend = Friend.create!(user_id: user1.id, friend_id: user3.id)
+      trip = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user1.id )
+      trip2 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user3.id )
+      trip3 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user2.id )
+      trip4 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user4.id )
+      get "/api/v1/users/#{user1.id}"
+      expect(response).to be_successful
+      profile_details = JSON.parse(response.body, symbolize_names:true)
+      expect(profile_details[:data][:attributes][:rides][:data]).to be_an(Array)
+      expect(profile_details[:data][:attributes][:rides][:data].count).to eq(3)
+    end
+
+    it 'does not grab other rides' do
+      user1 = User.create!(email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
+      user2 = User.create!(email: "jake@gmail.com", password: "password", about_me: "I like driving.")
+      user3 = User.create!(email: "cydnee@gmail.com", password: "password", about_me: "I like driving.")
+      user4= User.create!(email: "differnt@gmail.com", password: "password", about_me: "I like driving.")
+      user5 = User.create!(email: "new@gmail.com", password: "password", about_me: "I like driving.")
+      friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
+      friend = Friend.create!(user_id: user1.id, friend_id: user3.id)
+      friend = Friend.create!(user_id: user1.id, friend_id: user5.id)
+      trip = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user1.id )
+      trip2 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user3.id )
+      trip3 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user2.id )
+      trip4 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user4.id )
+      trip5 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user5.id )
+
+      get "/api/v1/users/#{user1.id}"
+      expect(response).to be_successful
+      profile_details = JSON.parse(response.body, symbolize_names:true)
+      expect(profile_details[:data][:attributes][:rides][:data]).to be_an(Array)
+      expect(profile_details[:data][:attributes][:rides][:data].count).to eq(4)
     end
   end
+
+
 
   describe 'sad path' do
     it 'breaks without properly formatted id' do
