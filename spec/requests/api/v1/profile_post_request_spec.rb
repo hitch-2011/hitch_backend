@@ -7,7 +7,8 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
                       email: 'example@email.com',
                       password: '123',
                       password_confirmation: '123',
-                      about_me: 'Hi my name is example, I drive a whole bunch and want to carpool'
+                      bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
+                      fullname: 'Naomi Nagata'
                      }
       
       post api_v1_users_path, params: valid_params
@@ -19,7 +20,8 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
       invalid_params = {
         password: '123',
         password_confirmation: '123',
-        about_me: 'Hi my name is example, I drive a whole bunch and want to carpool'
+        bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
+        fullname: 'Naomi Nagata'
        }
 
        post api_v1_users_path, params: invalid_params
@@ -32,7 +34,48 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
         email: 'example@email.com',
         password: '123',
         password_confirmation: '12345',
-        about_me: 'Hi my name is example, I drive a whole bunch and want to carpool'
+        bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
+        fullname: 'Naomi Nagata'
+       }
+
+       post api_v1_users_path, params: invalid_params
+       json = JSON.parse(response.body, symbolize_names: true)
+       check_hash_structure(json, :error, String)
+       expect(json[:error]).to eq("invalid parameters")
+    end
+    it 'returns an error message if no password is given' do 
+      invalid_params = {
+        email: 'example@email.com',
+        password: '',
+        password_confirmation: '',
+        bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
+        fullname: 'Naomi Nagata'
+       }
+
+       post api_v1_users_path, params: invalid_params
+       json = JSON.parse(response.body, symbolize_names: true)
+       check_hash_structure(json, :error, String)
+       expect(json[:error]).to eq("invalid parameters")
+    end
+    it 'returns an error message if no bio is given' do 
+      invalid_params = {
+        email: 'example@email.com',
+        password: '123',
+        password_confirmation: '123',
+        fullname: 'Naomi Nagata'
+       }
+
+       post api_v1_users_path, params: invalid_params
+       json = JSON.parse(response.body, symbolize_names: true)
+       check_hash_structure(json, :error, String)
+       expect(json[:error]).to eq("invalid parameters")
+    end
+    it 'returns an error message if no bio is given' do 
+      invalid_params = {
+        email: 'example@email.com',
+        password: '123',
+        password_confirmation: '123',
+        bio: 'Hi my name is example, I drive a whole bunch and want to carpool'
        }
 
        post api_v1_users_path, params: invalid_params

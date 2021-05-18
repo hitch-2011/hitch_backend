@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController 
   before_action :validate_id, only: [:show]
-  
+
   def create 
     @user = User.create(user_params)
     if @user.save
@@ -18,7 +18,7 @@ class Api::V1::UsersController < ApplicationController
   private 
 
   def user_params
-    params.permit(:email, :password, :password_confirmation, :about_me)
+    params.permit(:email, :password, :password_confirmation, :bio, :fullname)
   end
 
 end
