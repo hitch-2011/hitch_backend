@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Users API Endpoints" do
   describe "User Details" do
     it 'should return user details details based on id' do
-    user1 = User.create!(fullname: "fullname", email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
+    user1 = User.create(fullname: "fullname", email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
     user2 = User.create!(fullname: "fullname", email: "jake@gmail.com", password: "password", about_me: "I like driving.")
     user3 = User.create!(fullname: "fullname", email: "cydnee@gmail.com", password: "password", about_me: "I like driving.")
     friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
