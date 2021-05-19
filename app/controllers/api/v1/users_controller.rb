@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Api::V1::UsersController < ApplicationController
   before_action :validate_id, only: [:show]
   
