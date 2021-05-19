@@ -5,5 +5,6 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
     about_me { 'hello it is me' }
+    fullname { Faker::Name.unique.name }
   end
 end
