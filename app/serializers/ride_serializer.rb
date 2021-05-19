@@ -3,5 +3,5 @@ class RideSerializer
   attributes :origin,
              :destination,
              :departure_time,
-             :user_id 
+             :user_id
 end
