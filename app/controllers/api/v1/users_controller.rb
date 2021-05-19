@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   before_action :validate_id, only: [:show]
-  
+
   def create 
     @user = User.create(user_params)
     if @user.save
