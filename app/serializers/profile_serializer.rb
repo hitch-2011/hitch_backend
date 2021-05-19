@@ -2,7 +2,7 @@ class ProfileSerializer
   include FastJsonapi::ObjectSerializer
   attributes :fullname,
               :email,
-             :about_me
+             :bio
 
   attribute :rides do |object|
     rides = object.pluck_friend_id
