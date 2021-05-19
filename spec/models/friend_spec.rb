@@ -11,8 +11,8 @@ RSpec.describe Friend, type: :model do
   end
 
   it 'show status and be changed ' do
-    user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
-    user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", about_me: "I like driving.")
+    user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
+    user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", bio: "I like driving.")
     friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
     expect(friend.status).to eq("default")
     expect(friend.default?).to eq(true)
@@ -22,8 +22,8 @@ RSpec.describe Friend, type: :model do
   end
 
   it 'can be other status' do
-    user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
-    user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", about_me: "I like driving.")
+    user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
+    user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", bio: "I like driving.")
     friend = Friend.create!(user_id: user1.id, friend_id: user2.id, status: :pending)
     expect(friend.default?).to eq(false)
     expect(friend.pending?).to eq(true)
@@ -32,8 +32,8 @@ RSpec.describe Friend, type: :model do
   end
 
   it 'can be denied' do
-    user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
-    user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", about_me: "I like driving.")
+    user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
+    user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", bio: "I like driving.")
     friend = Friend.create!(user_id: user1.id, friend_id: user2.id, status: :denied)
     expect(friend.default?).to eq(false)
     expect(friend.pending?).to eq(false)
@@ -42,8 +42,8 @@ RSpec.describe Friend, type: :model do
   end
 
   it 'can be approved' do
-    user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
-    user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", about_me: "I like driving.")
+    user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
+    user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", bio: "I like driving.")
     friend = Friend.create!(user_id: user1.id, friend_id: user2.id, status: :approved)
     expect(friend.default?).to eq(false)
     expect(friend.pending?).to eq(false)

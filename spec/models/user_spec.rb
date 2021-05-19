@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :password }
     it { should validate_confirmation_of :password }
     it { should validate_uniqueness_of :email }
-    it { should validate_presence_of :about_me}
+    it { should validate_presence_of :bio}
   end
 
   describe 'relationships' do
@@ -15,11 +15,11 @@ RSpec.describe User, type: :model do
 
   describe 'instance methods' do
     it 'grabs all rides associated with user' do
-      user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
-      user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", about_me: "I like driving.")
-      user3 = User.create!(fullname: "full_name", email: "cydnee@gmail.com", password: "password", about_me: "I like driving.")
-      user4= User.create!(fullname: "full_name", email: "differnt@gmail.com", password: "password", about_me: "I like driving.")
-      user5 = User.create!(fullname: "full_name", email: "new@gmail.com", password: "password", about_me: "I like driving.")
+      user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
+      user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", bio: "I like driving.")
+      user3 = User.create!(fullname: "full_name", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
+      user4= User.create!(fullname: "full_name", email: "differnt@gmail.com", password: "password", bio: "I like driving.")
+      user5 = User.create!(fullname: "full_name", email: "new@gmail.com", password: "password", bio: "I like driving.")
       friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
       friend = Friend.create!(user_id: user1.id, friend_id: user3.id)
       friend = Friend.create!(user_id: user1.id, friend_id: user5.id)
@@ -33,10 +33,10 @@ RSpec.describe User, type: :model do
     end
 
     it 'can return users in an array' do
-      user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", about_me: "I like driving.")
-      user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", about_me: "I like driving.")
-      user3 = User.create!(fullname: "full_name", email: "cydnee@gmail.com", password: "password", about_me: "I like driving.")
-      user5 = User.create!(fullname: "full_name", email: "new@gmail.com", password: "password", about_me: "I like driving.")
+      user1 = User.create!(fullname: "full_name", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
+      user2 = User.create!(fullname: "full_name", email: "jake@gmail.com", password: "password", bio: "I like driving.")
+      user3 = User.create!(fullname: "full_name", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
+      user5 = User.create!(fullname: "full_name", email: "new@gmail.com", password: "password", bio: "I like driving.")
       friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
       friend = Friend.create!(user_id: user1.id, friend_id: user3.id)
       trip = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user1.id )
