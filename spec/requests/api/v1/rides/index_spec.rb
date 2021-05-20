@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-describe 'Rides Index Endpoint' do
-  describe 'GET /rides' do
-    it 'can fetch all rides' do
+xdescribe 'Rides Index Endpoint' do
+  xdescribe 'GET /rides' do
+    xit 'can fetch all rides' do
       VCR.use_cassette('ride-matcher') do
         user = create(:user).id
         ride = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80231, USA', user_id: user)
