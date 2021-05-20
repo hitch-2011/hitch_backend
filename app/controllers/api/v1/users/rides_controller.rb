@@ -13,6 +13,7 @@ class Api::V1::Users::RidesController < ApplicationController
   def index
     matched_rides = RidesFacade.all_matched_rides(get_zip(params[:origin]), get_zip(params[:destination]))
     render json: MatchedSerializer.new(matched_rides)
+  end 
 
   def create
     user = User.find(rides_params[:user_id])
@@ -33,5 +34,3 @@ class Api::V1::Users::RidesController < ApplicationController
   end
 
 end
-
-
