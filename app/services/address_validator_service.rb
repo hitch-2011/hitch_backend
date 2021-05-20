@@ -12,3 +12,4 @@ class AddressValidatorService
     end
   end
 end
+
