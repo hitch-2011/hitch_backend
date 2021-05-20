@@ -1,9 +1,10 @@
 class AddressValidatorService
   class << self
     def validate_address(place_info)
-      response = conn.('/api/v1/validate_address') do |request|
-      end
-      
+      conn.('/api/v1/validate_address') do |request|
+        require 'pry'; binding.pry
+        request.params[''] = place_info
+      end.body
     end
 
     def conn
@@ -11,3 +12,4 @@ class AddressValidatorService
     end
   end
 end
+

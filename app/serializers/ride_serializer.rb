@@ -5,3 +5,4 @@ class RideSerializer
              :departure_time,
              :user_id
 end
+

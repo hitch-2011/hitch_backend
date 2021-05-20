@@ -1,5 +1,6 @@
 class RidesService
   class << self
+
     def match_origin(origin)
      response = conn.get("distance/#{origin}/2") do |request|
       end
@@ -17,3 +18,4 @@ class RidesService
     end
   end
 end
+

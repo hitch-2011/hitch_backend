@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+
 xdescribe 'Rides Index Endpoint' do
   xdescribe 'GET /rides' do
     xit 'can fetch all rides' do
@@ -18,6 +19,11 @@ xdescribe 'Rides Index Endpoint' do
 
         expect(response).to be_successful
         require "pry"; binding.pry
+
+        get "/api/v1/users/#{user}/rides?origin=#{ride.origin}&destination=#{ride.destination}&radius=2"
+
+        expect(response).to be_successful
+
         rides = JSON.parse(response.body, symbolize_names: true)[:data]
 
         expect(rides.count).to eq(1)
