@@ -8,7 +8,7 @@ RSpec.describe "Users API Endpoints" do
     user3 = User.create!(fullname: "fullname", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
     friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
     friend = Friend.create!(user_id: user1.id, friend_id: user3.id)
-    @ride = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user1.id )
+    @ride = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user1.id )
       get "/api/v1/users/#{user1.id}"
       expect(response).to be_successful
       profile_details = JSON.parse(response.body, symbolize_names:true)
@@ -68,8 +68,8 @@ RSpec.describe "Users API Endpoints" do
       user3 = User.create!(fullname: "fullname", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
       friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
       friend = Friend.create!(user_id: user1.id, friend_id: user3.id)
-      trip = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user1.id )
-      trip2 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user3.id )
+      trip = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user1.id )
+      trip2 = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user3.id )
       get "/api/v1/users/#{user1.id}"
       expect(response).to be_successful
       profile_details = JSON.parse(response.body, symbolize_names:true)
@@ -85,10 +85,10 @@ RSpec.describe "Users API Endpoints" do
       user4= User.create!(fullname: "fullname", email: "differnt@gmail.com", password: "password", bio: "I like driving.")
       friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
       friend = Friend.create!(user_id: user1.id, friend_id: user3.id)
-      trip = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user1.id )
-      trip2 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user3.id )
-      trip3 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user2.id )
-      trip4 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user4.id )
+      trip = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user1.id )
+      trip2 = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user3.id )
+      trip3 = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user2.id )
+      trip4 = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user4.id )
       get "/api/v1/users/#{user1.id}"
       expect(response).to be_successful
       profile_details = JSON.parse(response.body, symbolize_names:true)
@@ -105,11 +105,11 @@ RSpec.describe "Users API Endpoints" do
       friend = Friend.create!(user_id: user1.id, friend_id: user2.id)
       friend = Friend.create!(user_id: user1.id, friend_id: user3.id)
       friend = Friend.create!(user_id: user1.id, friend_id: user5.id)
-      trip = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user1.id )
-      trip2 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user3.id )
-      trip3 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user2.id )
-      trip4 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user4.id )
-      trip5 = Ride.create!(origin: "origin", destination: "destination", departure_time: "9:00am", user_id: user5.id )
+      trip = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user1.id )
+      trip2 = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user3.id )
+      trip3 = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user2.id )
+      trip4 = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user4.id )
+      trip5 = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user5.id )
 
       get "/api/v1/users/#{user1.id}"
       expect(response).to be_successful
