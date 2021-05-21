@@ -7,48 +7,63 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
                       email: 'example@email.com',
                       password: '123',
                       bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
-                      fullname: 'Naomi Nagata'
+                      fullname: 'Naomi Nagata', 
+                      make: 'Hyundai',
+                      model: 'Sonata',
+                      year: '2013'
                      }
       
       post api_v1_users_path, params: valid_params
       expect(response).to have_http_status(201)
     end
+     
     it 'should return a 201 if no bio is given but other params are' do 
       valid_params = {
                       email: 'example@email.com',
                       password: '123',
-                      fullname: 'Naomi Nagata'
+                      fullname: 'Naomi Nagata',
+                      make: 'Hyundai',
+                      model: 'Sonata',
+                      year: '2013'
                      }
       
       post api_v1_users_path, params: valid_params
       expect(response).to have_http_status(201)
     end
   end
+
   describe 'sad path' do 
     it 'returns an error message if no email is present' do 
       invalid_params = {
-        password: '123',
-        bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
-        fullname: 'Naomi Nagata'
-       }
+                        password: '123',
+                        bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
+                        fullname: 'Naomi Nagata',
+                        make: 'Hyundai',
+                        model: 'Sonata',
+                        year: '2013'
+                      }
 
        post api_v1_users_path, params: invalid_params
        json = JSON.parse(response.body, symbolize_names: true)
        check_hash_structure(json, :error, String)
-       expect(json[:error]).to eq("invalid parameters")
+       expect(json[:error]).to eq("Validation failed: Email can't be blank, Email is invalid")
     end
+
     it 'returns an error message if no password is given' do 
       invalid_params = {
-        email: 'example@email.com',
-        password: '',
-        bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
-        fullname: 'Naomi Nagata'
-       }
+                        email: 'example@email.com',
+                        password: '',
+                        bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
+                        fullname: 'Naomi Nagata',
+                        make: 'Hyundai',
+                        model: 'Sonata',
+                        year: '2013'
+                      }
 
        post api_v1_users_path, params: invalid_params
        json = JSON.parse(response.body, symbolize_names: true)
        check_hash_structure(json, :error, String)
-       expect(json[:error]).to eq("invalid parameters")
+       expect(json[:error]).to eq("Validation failed: Password can't be blank")
     end
   end
 end
