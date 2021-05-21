@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://protected-thicket-75507.herokuapp.com/distance/80017/2
+    uri: https://protected-thicket-75507.herokuapp.com/distance/46311/2
     body:
       encoding: US-ASCII
       string: ''
@@ -23,7 +23,7 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '182'
+      - '180'
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
@@ -33,16 +33,16 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Fri, 21 May 2021 20:07:36 GMT
+      - Fri, 21 May 2021 20:02:44 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"radius":{"query":{"code":"80017","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80017","city":"Aurora","state":"CO","city_en":null,"state_en":null,"distance":0}]}}'
-  recorded_at: Fri, 21 May 2021 20:07:36 GMT
+      string: '{"radius":{"query":{"code":"46311","unit":"miles","radius":"2","country":"us"},"results":[{"code":"46311","city":"Dyer","state":"IN","city_en":null,"state_en":null,"distance":0}]}}'
+  recorded_at: Fri, 21 May 2021 20:02:44 GMT
 - request:
     method: get
-    uri: https://protected-thicket-75507.herokuapp.com/distance/80231/2
+    uri: https://protected-thicket-75507.herokuapp.com/distance/46311/2
     body:
       encoding: US-ASCII
       string: ''
@@ -63,7 +63,7 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '275'
+      - '180'
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
@@ -73,11 +73,11 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Fri, 21 May 2021 20:07:37 GMT
+      - Fri, 21 May 2021 20:02:44 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"radius":{"query":{"code":"80231","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80231","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":0},{"code":"80247","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":1.24}]}}'
-  recorded_at: Fri, 21 May 2021 20:07:37 GMT
+      string: '{"radius":{"query":{"code":"46311","unit":"miles","radius":"2","country":"us"},"results":[{"code":"46311","city":"Dyer","state":"IN","city_en":null,"state_en":null,"distance":0}]}}'
+  recorded_at: Fri, 21 May 2021 20:02:44 GMT
 recorded_with: VCR 6.0.0

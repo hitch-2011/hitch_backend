@@ -9,11 +9,11 @@ class Ride < ApplicationRecord
 
   def self.find_matched_routes(origins, destinations)
     matched_origins = Ride.where(zipcode_origin: origins)
-    matched_origins.where(zipcode_destination: destinations)
+    matched_routes = matched_origins.where(zipcode_destination: destinations)
   end
 
   def create_zipcodes
-    self.zipcode_origin = origin.split(',').map { |i| i[-5..-1] }[2]
-    self.zipcode_destination = destination.split(',').map { |i| i[-5..-1] }[2]
+    self.zipcode_origin = origin.split(',').map { |i| i[-5..-1] }[1].to_i
+    self.zipcode_destination = destination.split(',').map { |i| i[-5..-1] }[1].to_i
   end
 end
