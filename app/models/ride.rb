@@ -1,5 +1,6 @@
 class Ride < ApplicationRecord
   belongs_to :user
+  has_many :ridedays
   validates :origin, presence: true
   validates :destination, presence: true
   validates :departure_time, presence: true
@@ -12,7 +13,7 @@ class Ride < ApplicationRecord
   end
 
   def create_zipcodes
-    self.zipcode_origin = origin.split(',').map { |i| i[-5..-1] }[2]
-    self.zipcode_destination = destination.split(',').map { |i| i[-5..-1] }[2]
+    self.zipcode_origin = origin.split(',').map { |i| i[-5..-1] }[1].to_i
+    self.zipcode_destination = destination.split(',').map { |i| i[-5..-1] }[1].to_i
   end
 end

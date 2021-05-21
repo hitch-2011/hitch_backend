@@ -14,7 +14,10 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
                      }
       
       post api_v1_users_path, params: valid_params
-      expect(response).to have_http_status(201)
+      expect(response).to have_http_status(200)
+      data = JSON.parse(response.body, symbolize_names: true)
+      check_hash_structure(data[:data], :id, String)
+      check_hash_structure(data[:data], :attributes, Hash)
     end
      
     it 'should return a 201 if no bio is given but other params are' do 
@@ -28,7 +31,11 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
                      }
       
       post api_v1_users_path, params: valid_params
-      expect(response).to have_http_status(201)
+      expect(response).to have_http_status(200)
+      data = JSON.parse(response.body, symbolize_names: true)
+      check_hash_structure(data[:data], :id, String)
+      check_hash_structure(data[:data], :attributes, Hash)
+      
     end
   end
 

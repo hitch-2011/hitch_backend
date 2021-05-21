@@ -29,11 +29,11 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Thu, 20 May 2021 01:02:53 GMT
+      - Fri, 21 May 2021 19:53:17 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"route":{"routeError":{"errorCode":211,"message":""}}}'
-  recorded_at: Thu, 20 May 2021 01:02:53 GMT
+  recorded_at: Fri, 21 May 2021 19:53:17 GMT
 recorded_with: VCR 6.0.0

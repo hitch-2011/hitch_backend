@@ -33,13 +33,13 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Fri, 21 May 2021 14:57:28 GMT
+      - Fri, 21 May 2021 20:02:44 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"radius":{"query":{"code":"46311","unit":"miles","radius":"2","country":"us"},"results":[{"code":"46311","city":"Dyer","state":"IN","city_en":null,"state_en":null,"distance":0}]}}'
-  recorded_at: Fri, 21 May 2021 14:57:28 GMT
+  recorded_at: Fri, 21 May 2021 20:02:44 GMT
 - request:
     method: get
     uri: https://protected-thicket-75507.herokuapp.com/distance/46311/2
@@ -73,11 +73,11 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Fri, 21 May 2021 14:57:28 GMT
+      - Fri, 21 May 2021 20:02:44 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"radius":{"query":{"code":"46311","unit":"miles","radius":"2","country":"us"},"results":[{"code":"46311","city":"Dyer","state":"IN","city_en":null,"state_en":null,"distance":0}]}}'
-  recorded_at: Fri, 21 May 2021 14:57:28 GMT
+  recorded_at: Fri, 21 May 2021 20:02:44 GMT
 recorded_with: VCR 6.0.0
