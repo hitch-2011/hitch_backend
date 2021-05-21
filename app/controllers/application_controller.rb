@@ -15,7 +15,6 @@ include ActionController::RequestForgeryProtection
     render json: { error: exception.message }, status: :not_found
   end
 
-
   def validate_id
     id = :"#{params.keys.grep(/id/)[0]}"
     error = "String not accepted as id"
