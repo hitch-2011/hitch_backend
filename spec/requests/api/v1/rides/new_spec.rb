@@ -6,8 +6,8 @@ require 'rails_helper'
         VCR.use_cassette('create_new_ride_happy_path') do
           user        = create(:user)
           ride_params = {
-            origin: '3956 Alcott St Denver, CO 80211',
-            destination: '1138 Corona St Denver, CO 80218',
+            origin: '3956 Alcott St, Denver, CO 80211',
+            destination: '1138 Corona St, Denver, CO 80218',
             departure_time: '15:30',
             user_id: user.id,
             days: ["monday", "tuesday", "thursday"]
@@ -18,7 +18,7 @@ require 'rails_helper'
           post "/api/v1/users/#{user.id}/rides", headers: headers, params: JSON.generate(ride_params)
 
           created_ride = Ride.last
-          ridedays = Rideday.where("ride_id = #{created_ride.id}") 
+          ridedays = Rideday.where("ride_id = #{created_ride.id}")
 
           expect(response).to be_successful
           expect(response).to have_http_status(:created)
@@ -39,7 +39,7 @@ require 'rails_helper'
           user        = create(:user)
           ride_params = {
             origin: '1125 South Kalispell St, Aurora, CO 80017',
-            destination: '1138 N Corona St Denver, CO 80218',
+            destination: '1138 N Corona St, Denver, CO 80218',
             departure_time: '15:30',
             user_id: user.id,
             days: ["monday", "tuesday", "thursday"]
@@ -65,7 +65,7 @@ require 'rails_helper'
           user        = create(:user)
           ride_params = {
             origin: '300 LaPorte Ave, Fort Collins, CO 80521',
-            destination: '7120 N Academy Blvd, Colorado Springs, CO, 80920',
+            destination: '1216 Royal Dublin Ln, Dyer, In 46311',
             departure_time: '15:30',
             user_id: user.id,
             days: ["monday", "tuesday", "thursday"]
@@ -76,7 +76,7 @@ require 'rails_helper'
           post "/api/v1/users/#{user.id}/rides", headers: headers, params: JSON.generate(ride_params)
 
           created_ride = Ride.last
-          ridedays = Rideday.where("ride_id = #{created_ride.id}") 
+          ridedays = Rideday.where("ride_id = #{created_ride.id}")
 
           expect(response).to be_successful
           expect(response).to have_http_status(:created)
@@ -97,7 +97,7 @@ require 'rails_helper'
       VCR.use_cassette('cannot_find_route') do
         user        = create(:user)
         ride_params = {
-          origin: '1125 S Kalispell St Aurora, CO 80017',
+          origin: '1125 S Kalispell St, Aurora, CO 80017',
           destination: 'tokyo, japan',
           departure_time: '15:30',
           user_id: user.id,
@@ -120,7 +120,7 @@ require 'rails_helper'
       VCR.use_cassette('cannot_find_route_international') do
         user        = create(:user)
         ride_params = {
-          origin: '1125 S Kalispell St Aurora, CO 80017',
+          origin: '1125 S Kalispell St, Aurora, CO 80017',
           destination: 'Berlin, Germany',
           departure_time: '15:30',
           user_id: user.id,
