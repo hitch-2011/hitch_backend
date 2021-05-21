@@ -1,5 +1,6 @@
 class Ride < ApplicationRecord
   belongs_to :user
+  has_many :ridedays
   validates :origin, presence: true
   validates :destination, presence: true
   validates :departure_time, presence: true
