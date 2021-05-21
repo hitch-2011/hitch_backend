@@ -23,7 +23,7 @@ include ActionController::RequestForgeryProtection
 
   def invalid_params
     render json: { data: {}, error: 'invalid parameters' }, status: :bad_request
-  end 
+  end
 
   def get_zip(address)
     address.split(',').map { |i| i[-5..-1] }[2].to_i
