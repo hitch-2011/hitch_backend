@@ -15,7 +15,6 @@ include ActionController::RequestForgeryProtection
     render json: { error: exception.message }, status: :not_found
   end
 
-
   def validate_id
     id = :"#{params.keys.grep(/id/)[0]}"
     error = "String not accepted as id"
@@ -26,10 +25,6 @@ include ActionController::RequestForgeryProtection
     render json: { data: {}, error: 'invalid parameters' }, status: :bad_request
   end 
 
-  def get_zip(address)
-    address.split(',').map { |i| i[-5..-1] }[2].to_i
-  end
-   
   def get_zip(address)
     address.split(',').map { |i| i[-5..-1] }[2].to_i
   end
