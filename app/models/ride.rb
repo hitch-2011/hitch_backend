@@ -8,7 +8,7 @@ class Ride < ApplicationRecord
 
   def self.find_matched_routes(origins, destinations)
     matched_origins = Ride.where(zipcode_origin: origins)
-    matched_origins.where(zipcode_destination: destinations)
+    matched_routes = matched_origins.where(zipcode_destination: destinations)
   end
 
   def create_zipcodes

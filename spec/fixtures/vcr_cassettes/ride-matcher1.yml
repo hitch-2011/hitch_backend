@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://protected-thicket-75507.herokuapp.com/distance/80017/2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/html;charset=utf-8
+      Content-Length:
+      - '182'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
+      Date:
+      - Fri, 21 May 2021 13:44:28 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"radius":{"query":{"code":"80017","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80017","city":"Aurora","state":"CO","city_en":null,"state_en":null,"distance":0}]}}'
+  recorded_at: Fri, 21 May 2021 13:44:28 GMT
+- request:
+    method: get
+    uri: https://protected-thicket-75507.herokuapp.com/distance/80241/2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.4.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/html;charset=utf-8
+      Content-Length:
+      - '184'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
+      Date:
+      - Fri, 21 May 2021 13:44:29 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"radius":{"query":{"code":"80241","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80241","city":"Thornton","state":"CO","city_en":null,"state_en":null,"distance":0}]}}'
+  recorded_at: Fri, 21 May 2021 13:44:29 GMT
+recorded_with: VCR 6.0.0
