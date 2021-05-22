@@ -14,7 +14,16 @@ describe 'Rides Index Endpoint' do
         ride4 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80247, USA', user_id: user)
         ride5 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80000, USA', user_id: user)
         ride6 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80231, USA', user_id: user)
-
+        rideday = Rideday.create!(day_of_week: 'Monday', ride_id: ride.id)
+        rideday2 = Rideday.create!(day_of_week: 'Monday', ride_id: ride2.id)
+        rideday3 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride.id)
+        rideday4 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride2.id)
+        rideday5 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride.id)
+        rideday6 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride2.id)
+        rideday7 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride3.id)
+        rideday8 = Rideday.create!(day_of_week: 'Monday', ride_id: ride3.id)
+        rideday9 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride3.id)
+        rideday10 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride4.id)
         get "/api/v1/users/#{user}/rides"
         expect(response).to be_successful
 
@@ -55,6 +64,16 @@ describe 'Rides Index Endpoint' do
         ride5 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80000, USA', user_id: user5)
         ride6 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80241, USA', user_id: user6)
         ride7 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80241, USA', user_id: user6)
+        rideday = Rideday.create!(day_of_week: 'Monday', ride_id: ride.id)
+        rideday2 = Rideday.create!(day_of_week: 'Monday', ride_id: ride2.id)
+        rideday3 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride.id)
+        rideday4 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride2.id)
+        rideday5 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride.id)
+        rideday6 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride2.id)
+        rideday7 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride3.id)
+        rideday8 = Rideday.create!(day_of_week: 'Monday', ride_id: ride3.id)
+        rideday9 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride3.id)
+        rideday10 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride4.id)
         get "/api/v1/users/#{user}/rides"
         rides = JSON.parse(response.body, symbolize_names: true)[:data]
         expect(response).to be_successful
@@ -81,6 +100,16 @@ describe 'Rides Index Endpoint' do
         ride4 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80247, USA', user_id: user4)
         ride5 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80000, USA', user_id: user5)
         ride6 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80241, USA', user_id: user6)
+        rideday = Rideday.create!(day_of_week: 'Monday', ride_id: ride.id)
+        rideday2 = Rideday.create!(day_of_week: 'Monday', ride_id: ride2.id)
+        rideday3 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride.id)
+        rideday4 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride2.id)
+        rideday5 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride.id)
+        rideday6 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride2.id)
+        rideday7 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride3.id)
+        rideday8 = Rideday.create!(day_of_week: 'Monday', ride_id: ride3.id)
+        rideday9 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride3.id)
+        rideday10 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride4.id)
         get "/api/v1/users/10000000/rides"
         sad = JSON.parse(response.body, symbolize_names: true)
         expect(sad).to eq({:error=>"Couldn't find User with 'id'=10000000"})
@@ -100,6 +129,16 @@ describe 'Rides Index Endpoint' do
         ride4 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80247, USA', user_id: user4)
         ride5 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80000, USA', user_id: user5)
         ride6 = create(:ride, origin: '1125 S Kalispell St, Aurora, CO 80017, USA', destination: '3300 S Tamarac Dr, Denver, CO 80241, USA', user_id: user6)
+        rideday = Rideday.create!(day_of_week: 'Monday', ride_id: ride.id)
+        rideday2 = Rideday.create!(day_of_week: 'Monday', ride_id: ride2.id)
+        rideday3 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride.id)
+        rideday4 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride2.id)
+        rideday5 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride.id)
+        rideday6 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride2.id)
+        rideday7 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride3.id)
+        rideday8 = Rideday.create!(day_of_week: 'Monday', ride_id: ride3.id)
+        rideday9 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride3.id)
+        rideday10 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride4.id)
 
         get "/api/v1/users/#{user2}/rides"
         rides = JSON.parse(response.body, symbolize_names: true)[:data]
