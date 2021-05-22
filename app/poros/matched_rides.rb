@@ -14,7 +14,7 @@ class MatchedRides
     distances = grab_distances(origin_data)
     distances2 = grab_distances(destination_data)
     final_rides = rides.map do |ride|
-      RideDistance.new(ride, distances, distances2)
+    RideDistance.new(ride, distances, distances2)
     end
   end
 
