@@ -1,17 +1,13 @@
 class Api::V1::Users::RidesController < ApplicationController
   before_action :validate_id, only: [:index]
-  before_action :find_user, only: [:index]
+  before_action :find_user_origin_and_destination, only: [:index]
 
   def index
-    if check_origin_destination(params)
-      render json: { data: 'You need to send in both complete addresses' }, status: 400
+    matched_rides = RidesFacade.all_matched_rides(get_zip(@origin), get_zip(@destination), params[:id], @origin, @destination)
+    if matched_rides[0].matching_routes.count == 1
+      render json: { data: 'You are our first route with that destination and origin. We will find a hitch soon for you!' }, status: 200
     else
-      matched_rides = RidesFacade.all_matched_rides(get_zip(params[:origin]), get_zip(params[:destination]), params)
-      if matched_rides[0].matching_routes.count == 1
-        render json: { data: 'You are our first route with that destination and origin. We will find a hitch soon for you!' }, status: 200
-      else
-        render json: MatchedSerializer.new(matched_rides)
-      end
+      render json: MatchedSerializer.new(matched_rides)
     end
   end
 
@@ -41,11 +37,8 @@ class Api::V1::Users::RidesController < ApplicationController
     params.permit(:origin, :user_id, :destination, :departure_time)
   end
 
-  def check_origin_destination(params)
-    params[:origin].nil? || params[:destination].nil? || params[:destination].empty? || params[:origin].empty?
-  end
-
-  def find_user
-    User.find(params[:id])
+  def find_user_origin_and_destination
+    @origin = User.find(params[:id]).rides.first.origin
+    @destination = User.find(params[:id]).rides.first.destination
   end
 end
