@@ -1,14 +1,10 @@
 class Api::V1::Users::RidesController < ApplicationController
   before_action :validate_id, only: [:index]
-  before_action :find_user_origin_and_destination, only: [:index]
+  before_action :find_user_and_ride, only: [:index]
 
   def index
-    matched_rides = RidesFacade.all_matched_rides(get_zip(@origin), get_zip(@destination), params[:id], @origin, @destination)
-    if matched_rides[0].matching_routes.count == 1
-      render json: { data: 'You are our first route with that destination and origin. We will find a hitch soon for you!' }, status: 200
-    else
-      render json: MatchedSerializer.new(matched_rides)
-    end
+    matched_rides = RidesFacade.all_matched_rides(@user, @ride)
+    render json: MatchedSerializer.new(matched_rides)
   end
 
   def create
@@ -37,8 +33,8 @@ class Api::V1::Users::RidesController < ApplicationController
     params.permit(:origin, :user_id, :destination, :departure_time)
   end
 
-  def find_user_origin_and_destination
-    @origin = User.find(params[:id]).rides.first.origin
-    @destination = User.find(params[:id]).rides.first.destination
+  def find_user_and_ride
+    @user = User.find(params[:id])
+    @ride = @user.rides.first
   end
 end

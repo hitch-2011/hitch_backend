@@ -33,13 +33,13 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Sat, 22 May 2021 15:38:33 GMT
+      - Sat, 22 May 2021 17:30:28 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"radius":{"query":{"code":"80017","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80017","city":"Aurora","state":"CO","city_en":null,"state_en":null,"distance":0}]}}'
-  recorded_at: Sat, 22 May 2021 15:38:33 GMT
+  recorded_at: Sat, 22 May 2021 17:30:28 GMT
 - request:
     method: get
     uri: https://protected-thicket-75507.herokuapp.com/distance/80231/2
@@ -73,11 +73,11 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Sat, 22 May 2021 15:38:34 GMT
+      - Sat, 22 May 2021 17:30:29 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
       string: '{"radius":{"query":{"code":"80231","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80231","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":0},{"code":"80247","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":1.24}]}}'
-  recorded_at: Sat, 22 May 2021 15:38:34 GMT
+  recorded_at: Sat, 22 May 2021 17:30:29 GMT
 recorded_with: VCR 6.0.0
