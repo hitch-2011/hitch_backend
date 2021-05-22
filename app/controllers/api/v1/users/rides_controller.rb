@@ -5,7 +5,7 @@ class Api::V1::Users::RidesController < ApplicationController
   def index
     matched_rides = RidesFacade.all_matched_rides(@user, @ride)
     if matched_rides.matched_routes.count == 1
-      render json: { data: 'You are our route in those areas! We will find a hitch for you soon!' }, status: 200
+      render json: { data: 'You are our first route in those areas! We will find a hitch for you soon!' }, status: 200
     else
       render json: MatchedSerializer.new(matched_rides)
     end
