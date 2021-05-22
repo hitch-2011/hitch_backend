@@ -1,19 +1,19 @@
 class RidesFacade
   class << self
 
-    def all_matched_rides(origin_zip, destination_zip, params)
+    def all_matched_rides(origin_zip, destination_zip, user_id, origin, destination)
     origin_data = RidesService.match_origin(origin_zip)
     destination_data = RidesService.match_destination(destination_zip)
-    grab_origin_zipcodes(origin_data, destination_data, params)
+    grab_origin_zipcodes(origin_data, destination_data, user_id, origin, destination)
     end
 
-    def grab_origin_zipcodes(origin_data, destination_data, params)
+    def grab_origin_zipcodes(origin_data, destination_data, user_id, origin, destination)
       origin_zips = grab_destination_zipcodes(origin_data)
       destination_zips = grab_destination_zipcodes(destination_data)
       origin_data[:radius][:results].map do |ride|
-        OpenStruct.new({origin_addr: params[:origin],
-                   original_user_id: params[:id],
-                   destination_addr: params[:destination],
+        OpenStruct.new({origin_addr: origin,
+                   original_user_id: user_id,
+                   destination_addr: destination,
                     matching_routes: Ride.find_matched_routes(origin_zips, destination_zips),
                distance_from_origin: grab_distances(origin_data),
           distance_from_destination: grab_distances(destination_data)

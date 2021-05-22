@@ -1,5 +1,5 @@
 class MapquestService
-  class << self 
+  class << self
     def find_drivable_route(origin, destination)
       response = conn.get('/find_drivable_route') do |req|
         req.params[:address1] = origin.gsub(" ", "+")

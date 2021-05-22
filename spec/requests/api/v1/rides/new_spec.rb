@@ -6,8 +6,8 @@ require 'rails_helper'
         VCR.use_cassette('create_new_ride_happy_path') do
           user        = create(:user)
           ride_params = {
-            origin: '3956 Alcott St, Denver, CO 80211',
-            destination: '1138 Corona St, Denver, CO 80218',
+            origin: '3956 Alcott St, Denver, CO 80211, USA',
+            destination: '1138 Corona St, Denver, CO 80218, USA',
             departure_time: '15:30',
             user_id: user.id,
             days: ["monday", "tuesday", "thursday"]
@@ -138,5 +138,29 @@ require 'rails_helper'
         expect(json_response).to eq("No driving directions found")
       end
     end
+  end
+
+  describe 'edgecase' do
+    # it 'returns proper information if an array is sent back' do
+    #   VCR.use_cassette('when_array_is_sent') do
+    #     user        = create(:user)
+    #     ride_params = {
+    #       origin: '1125 S Kalispell St, Aurora, CO 80017',
+    #       destination: '2330 N Harvest Dance Rd, Jackson, WY 83001',
+    #       departure_time: '15:30',
+    #       user_id: user.id,
+    #       days: ["monday", "tuesday", "thursday"]
+    #     }
+    #
+    #     headers     = { 'CONTENT_TYPE' => 'application/json' }
+    #
+    #     post "/api/v1/users/#{user.id}/rides", headers: headers, params: JSON.generate(ride_params)
+    #     created_ride = Ride.last
+    #     require "pry"; binding.pry
+    #     ridedays = Rideday.where("ride_id = #{created_ride.id}")
+    #
+    #     expect(response).to be_successful
+    #   end
+    # end
   end
 end
