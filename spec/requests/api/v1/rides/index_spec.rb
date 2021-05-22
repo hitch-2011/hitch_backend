@@ -103,7 +103,7 @@ describe 'Rides Index Endpoint' do
 
         get "/api/v1/users/#{user2}/rides"
         rides = JSON.parse(response.body, symbolize_names: true)[:data]
-        expect(rides).to eq('You are our route in those areas! We will find a hitch for you soon!')
+        expect(rides).to eq('You are our first route in those areas! We will find a hitch for you soon!')
     end
   end
 end
