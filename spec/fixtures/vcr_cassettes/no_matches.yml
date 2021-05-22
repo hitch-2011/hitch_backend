@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://protected-thicket-75507.herokuapp.com/distance/80017/2
+    uri: https://protected-thicket-75507.herokuapp.com/distance/46311/2
     body:
       encoding: US-ASCII
       string: ''
@@ -23,7 +23,7 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '182'
+      - '180'
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
@@ -33,16 +33,16 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Sat, 22 May 2021 15:50:22 GMT
+      - Sat, 22 May 2021 18:09:11 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"radius":{"query":{"code":"80017","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80017","city":"Aurora","state":"CO","city_en":null,"state_en":null,"distance":0}]}}'
-  recorded_at: Sat, 22 May 2021 15:50:22 GMT
+      string: '{"radius":{"query":{"code":"46311","unit":"miles","radius":"2","country":"us"},"results":[{"code":"46311","city":"Dyer","state":"IN","city_en":null,"state_en":null,"distance":0}]}}'
+  recorded_at: Sat, 22 May 2021 18:09:11 GMT
 - request:
     method: get
-    uri: https://protected-thicket-75507.herokuapp.com/distance/80032/2
+    uri: https://protected-thicket-75507.herokuapp.com/distance/80031/2
     body:
       encoding: US-ASCII
       string: ''
@@ -63,7 +63,7 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '133'
+      - '187'
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
@@ -73,12 +73,11 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Sat, 22 May 2021 15:50:22 GMT
+      - Sat, 22 May 2021 18:09:12 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"radius":{"query":{"code":"80032","unit":"miles","radius":"2","country":"us"},"results":{"error":"postalcode  could
-        not be found"}}}'
-  recorded_at: Sat, 22 May 2021 15:50:22 GMT
+      string: '{"radius":{"query":{"code":"80031","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80031","city":"Westminster","state":"CO","city_en":null,"state_en":null,"distance":0}]}}'
+  recorded_at: Sat, 22 May 2021 18:09:12 GMT
 recorded_with: VCR 6.0.0

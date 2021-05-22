@@ -15,6 +15,7 @@ class RideDistance
     @zipcode_origin = ride.zipcode_origin
     @zipcode_destination = ride.zipcode_destination
     @user_id = ride.user_id
+    @user_name = User.find(@user_id).fullname
     @origin = ride.origin
     @destination = ride.destination
     @distance_from_origin = match_distances(ride, distances, zipcode_origin)
