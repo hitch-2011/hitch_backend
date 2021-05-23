@@ -2,9 +2,9 @@ dominic  = User.create!(fullname: "fullname", email: "dominic@gmail.com", passwo
 jake     = User.create!(fullname: "fullname", email: "jake@gmail.com", password: "password", bio: "I like driving.")
 cydnee   = User.create!(fullname: "fullname", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
 
-ride1    = Ride.create!(origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: jake.id )
-ride2    = Ride.create!(origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: cydnee.id )
-ride3    = Ride.create!(origin: "3956 Alcott St Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: dominic.id )
+ride1    = Ride.create!(origin: "3956 Alcott St, Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: jake.id )
+ride2    = Ride.create!(origin: "3956 Alcott St, Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: cydnee.id )
+ride3    = Ride.create!(origin: "3956 Alcott St, Denver, CO 80211, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: dominic.id )
 
 friends1 = Friend.create!(user_id: jake.id, friend_id: dominic.id)
 friends2 = Friend.create!(user_id: jake.id, friend_id: cydnee.id)
