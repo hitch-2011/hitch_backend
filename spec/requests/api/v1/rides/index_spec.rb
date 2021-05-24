@@ -26,7 +26,6 @@ describe 'Rides Index Endpoint' do
         rideday10 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride4.id)
         get "/api/v1/users/#{user}/rides"
         expect(response).to be_successful
-
         rides = JSON.parse(response.body, symbolize_names: true)[:data]
         expect(rides.count).to eq(3)
         check_hash_structure(rides, :type, String)
