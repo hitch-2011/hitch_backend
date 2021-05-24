@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://protected-thicket-75507.herokuapp.com/distance/80017/2
+    uri: https://protected-thicket-75507.herokuapp.com/distance/80017/4
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v1.4.1
+      - Faraday v1.4.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -33,22 +33,22 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Sat, 22 May 2021 17:30:28 GMT
+      - Mon, 24 May 2021 19:41:03 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"radius":{"query":{"code":"80017","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80017","city":"Aurora","state":"CO","city_en":null,"state_en":null,"distance":0}]}}'
-  recorded_at: Sat, 22 May 2021 17:30:28 GMT
+      string: '{"radius":{"query":{"code":"80017","unit":"miles","radius":"4","country":"us"},"results":[{"code":"80017","city":"Aurora","state":"CO","city_en":null,"state_en":null,"distance":0}]}}'
+  recorded_at: Mon, 24 May 2021 19:41:03 GMT
 - request:
     method: get
-    uri: https://protected-thicket-75507.herokuapp.com/distance/80231/2
+    uri: https://protected-thicket-75507.herokuapp.com/distance/80231/4
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v1.4.1
+      - Faraday v1.4.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -63,7 +63,7 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '275'
+      - '461'
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
@@ -73,11 +73,11 @@ http_interactions:
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Sat, 22 May 2021 17:30:29 GMT
+      - Mon, 24 May 2021 19:41:04 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"radius":{"query":{"code":"80231","unit":"miles","radius":"2","country":"us"},"results":[{"code":"80231","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":0},{"code":"80247","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":1.24}]}}'
-  recorded_at: Sat, 22 May 2021 17:30:29 GMT
+      string: '{"radius":{"query":{"code":"80231","unit":"miles","radius":"4","country":"us"},"results":[{"code":"80231","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":0},{"code":"80247","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":1.24},{"code":"80224","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":1.53},{"code":"80222","city":"Denver","state":"CO","city_en":null,"state_en":null,"distance":2.39}]}}'
+  recorded_at: Mon, 24 May 2021 19:41:04 GMT
 recorded_with: VCR 6.0.0
