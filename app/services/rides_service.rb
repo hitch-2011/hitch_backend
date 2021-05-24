@@ -2,13 +2,13 @@ class RidesService
   class << self
 
     def match_origin(origin)
-     response = conn.get("distance/#{origin}/2") do |request|
+     response = conn.get("distance/#{origin}/4") do |request|
       end
       JSON.parse(response.body, symbolize_names: true)
     end
 
     def match_destination(destination)
-      response = conn.get("distance/#{destination}/2") do |request|
+      response = conn.get("distance/#{destination}/4") do |request|
       end
       JSON.parse(response.body, symbolize_names: true)
     end
@@ -18,4 +18,3 @@ class RidesService
     end
   end
 end
-
