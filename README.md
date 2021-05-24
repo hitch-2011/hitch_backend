@@ -35,15 +35,14 @@ This project was tested with:
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
 - [Endpoints](#endpoints)  
-- [Project Architecture](#project-architecture)  
 - [Database Schema](#database-schema)  
 - [Application Features](#application-features)
   - [Feature 1](#feature-1)
 - [Testing](#testing)
 - [How to Contribute](#how-to-contribute)
 - [Roadmap](#roadmap)
-- [Contributors](#contributors)
-- [Acknowledgments](#acknowledgments)
+
+
 
 ### Getting Started
 
