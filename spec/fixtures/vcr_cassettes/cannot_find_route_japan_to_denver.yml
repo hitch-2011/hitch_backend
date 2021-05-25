@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://serene-mountain-58748.herokuapp.com/find_drivable_route?address1=1125%2BS%2BKalispell%2BSt,%2BAurora,%2BCO%2B80017&address2=Berlin,%2BGermany
+    uri: https://serene-mountain-58748.herokuapp.com/find_drivable_route?address1=japan&address2=1430%2BLarimer%2BSt,%2BDenver,%2BCO%2B80202,%2BUSA
     body:
       encoding: US-ASCII
       string: ''
@@ -23,17 +23,17 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '14'
+      - '53'
       X-Content-Type-Options:
       - nosniff
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.3/2018-10-18)
       Date:
-      - Tue, 25 May 2021 02:10:34 GMT
+      - Tue, 25 May 2021 02:12:27 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"route":null}'
-  recorded_at: Tue, 25 May 2021 02:10:35 GMT
+      string: '{"route":{"routeError":{"errorCode":2,"message":""}}}'
+  recorded_at: Tue, 25 May 2021 02:12:27 GMT
 recorded_with: VCR 6.0.0
