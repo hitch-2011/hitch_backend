@@ -109,7 +109,7 @@ These instructions will get you a copy of the project up and running on your loc
 <p style="text-align:center;"><img src="ys_design.png" width="600"></p> -->
 
 ### Database Schema
-<p style="text-align:center;"><img src="https://ibb.co/VH3vzJ6" height="350"></p>
+[Hitch] https://ibb.co/VH3vzJ6
 
 
 
