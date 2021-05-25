@@ -14,7 +14,7 @@ class Api::V1::Users::RidesController < ApplicationController
   def create
     user = User.find(rides_params[:user_id])
     result = MapquestService.find_drivable_route(params[:origin], params[:destination])
-    if result[:route].nil?
+    if result[:route].nil? || result[:route][:routeError][:errorCode] == 2
       render json: { data: 'No driving directions found' }, status: 400
     else
       @ride = user.rides.create!(rides_params)

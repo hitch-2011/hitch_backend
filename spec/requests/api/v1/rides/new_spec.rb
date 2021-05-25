@@ -116,7 +116,7 @@ require 'rails_helper'
       end
     end
 
-    it 'cannot find a route if an ocean is in the way' do
+    it 'cannot find a route if an ocean is in the way again' do
       VCR.use_cassette('cannot_find_route_international') do
         user        = create(:user)
         ride_params = {
@@ -137,6 +137,28 @@ require 'rails_helper'
 
         expect(json_response).to eq("No driving directions found")
       end
+    end
+    it 'cannot find a route japan to denver' do
+      VCR.use_cassette('cannot_find_route_japan_to_denver') do
+        user        = create(:user)
+        ride_params = {
+          origin: 'japan',
+          destination: '1430 Larimer St, Denver, CO 80202, USA',
+          departure_time: '15:30',
+          user_id: user.id,
+          days: ["monday", "tuesday", "thursday"]
+        }
+
+        headers     = { 'CONTENT_TYPE' => 'application/json' }
+
+        post "/api/v1/users/#{user.id}/rides", headers: headers, params: JSON.generate(ride_params)
+
+        expect(response.status).to eq(400)
+
+        json_response = JSON.parse(response.body, symbolize_names: true)[:data]
+
+        expect(json_response).to eq("No driving directions found")
+      end 
     end
   end
 
