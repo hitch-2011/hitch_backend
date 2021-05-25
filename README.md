@@ -68,7 +68,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Clone the repo
   ```
-  $ git clone https://github.com/Yardsourcing/yardsourcing-frontend
+  $ git clone https://github.com/hitch-2011/hitch_backend
   ```
 
 2. Bundle Install
@@ -123,7 +123,7 @@ $ bundle exec rspec
 ```
 $ bundle exec rspec <file path>
 ```
-for example: `bundle exec rspec spec/features/host/dashboard/index_spec.rb`
+for example: `bundle exec rspec spec/requests/api/vi/get_profile`
 
 ### How to Contribute
 
