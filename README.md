@@ -109,7 +109,7 @@ These instructions will get you a copy of the project up and running on your loc
 <p style="text-align:center;"><img src="ys_design.png" width="600"></p> -->
 
 ### Database Schema
-<p style="text-align:center;"><img src="[Hitch](https://user-images.githubusercontent.com/70593322/119404999-d4bd5f80-bc9d-11eb-9ef6-c5bea2de3bf9.png)
+<p style="text-align:center;"><img src="[Hitch](https://ibb.co/VH3vzJ6)
 " height="350"></p>
 
 ### Testing
