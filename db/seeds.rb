@@ -2,7 +2,7 @@ dominic  = User.create!(fullname: "Dominic", email: "dominic@gmail.com", passwor
 jake     = User.create!(fullname: "Jake", email: "jake@gmail.com", password: "password", bio: "I like driving.")
 cydnee   = User.create!(fullname: "Cydnee", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
 steven   = User.create!(fullname: "Steven", email: "steven@gmail.com", password: "password", bio: "I like driving.")
-alex   = User.create!(fullname: "Steven", email: "steven@gmail.com", password: "password", bio: "I like driving.")
+alex   = User.create!(fullname: "Steven", email: "alex@gmail.com", password: "password", bio: "I like driving.")
 
 ride1    = Ride.create!(origin: "1719 S Uinta Way, Denver, CO 80231", destination: "320 S Jasmine St, Denver, CO 80224, USA", departure_time: "9:00am", user_id: jake.id )
 ride2    = Ride.create!(origin: "9182 E Harvard Ave, Denver, CO 80231, USA", destination: "4381 E Montana Pl, Denver, CO 80222, USA", departure_time: "9:00am", user_id: cydnee.id )
