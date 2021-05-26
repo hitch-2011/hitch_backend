@@ -8,7 +8,7 @@ ride1    = Ride.create!(origin: "1719 S Uinta Way, Denver, CO 80231", destinatio
 ride2    = Ride.create!(origin: "9182 E Harvard Ave, Denver, CO 80231, USA", destination: "4381 E Montana Pl, Denver, CO 80222, USA", departure_time: "9:00am", user_id: cydnee.id )
 ride3    = Ride.create!(origin: "8659 E Wesley Dr, Denver, CO 80231, USA", destination: "1832 S Ivanhoe St, Denver, CO 80224, USA", departure_time: "9:00am", user_id: dominic.id )
 ride4    = Ride.create!(origin: "9142 E Missouri Ave, Denver, CO 80247, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: steven.id )
-ride5    = Ride.create!(origin: "4381 E Montana Pl, Denver, CO 80222, USA", destination: "9142 E Missouri Ave, Denver, CO 80247, USA", departure_time: "9:00am", user_id: steven.id )
+ride5    = Ride.create!(origin: "4381 E Montana Pl, Denver, CO 80222, USA", destination: "9142 E Missouri Ave, Denver, CO 80247, USA", departure_time: "9:00am", user_id: alex.id )
 
 friends1 = Friend.create!(user_id: jake.id, friend_id: dominic.id)
 friends2 = Friend.create!(user_id: jake.id, friend_id: cydnee.id)
