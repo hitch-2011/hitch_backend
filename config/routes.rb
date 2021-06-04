@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       namespace :users do
         post '/:id/rides', to: 'rides#create'
         get '/:id/rides', to: 'rides#index'
+
+        post '/:id/vehicles', to: 'vehicles#create', as: 'vehicle_path'
       end
     end
   end

@@ -16,7 +16,7 @@ class Profile
     @user_rides = user.rides
     @matched_rides = friends_rides(user)
     @friends = grab_friends(user)
-    @vehicle = user.vehicle
+    @vehicle = user.vehicles
     @ride_days = grab_string_days(user)
   end
 
