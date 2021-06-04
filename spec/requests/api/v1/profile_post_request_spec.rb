@@ -7,10 +7,10 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
                       email: 'example@email.com',
                       password: '123',
                       bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
-                      fullname: 'Naomi Nagata',
-                      make: 'Hyundai',
-                      model: 'Sonata',
-                      year: '2013'
+                      fullname: 'Naomi Nagata'
+                      # make: 'Hyundai',
+                      # model: 'Sonata',
+                      # year: '2013'
                      } 
 
       post api_v1_users_path, params: valid_params
@@ -19,17 +19,17 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
       check_hash_structure(data[:data], :id, String)
       check_hash_structure(data[:data], :attributes, Hash)
     end
-
+    
     it 'should return a 201 if no bio is given but other params are' do
       valid_params = {
-                      email: 'example@email.com',
-                      password: '123',
-                      fullname: 'Naomi Nagata',
-                      make: 'Hyundai',
-                      model: 'Sonata',
-                      year: '2013'
-                     }
-
+        email: 'example@email.com',
+        password: '123',
+        fullname: 'Naomi Nagata'
+        # make: 'Hyundai',
+        # model: 'Sonata',
+        # year: '2013'
+      }
+      
       post api_v1_users_path, params: valid_params
       expect(response).to have_http_status(200)
       data = JSON.parse(response.body, symbolize_names: true)
@@ -44,10 +44,10 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
       invalid_params = {
                         password: '123',
                         bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
-                        fullname: 'Naomi Nagata',
-                        make: 'Hyundai',
-                        model: 'Sonata',
-                        year: '2013'
+                        fullname: 'Naomi Nagata'
+                        # make: 'Hyundai',
+                        # model: 'Sonata',
+                        # year: '2013'
                       }
 
        post api_v1_users_path, params: invalid_params
@@ -61,10 +61,10 @@ RSpec.describe 'Api::V1::Users Create', type: :request do
                         email: 'example@email.com',
                         password: '',
                         bio: 'Hi my name is example, I drive a whole bunch and want to carpool',
-                        fullname: 'Naomi Nagata',
-                        make: 'Hyundai',
-                        model: 'Sonata',
-                        year: '2013'
+                        fullname: 'Naomi Nagata'
+                        # make: 'Hyundai',
+                        # model: 'Sonata',
+                        # year: '2013'
                       }
 
        post api_v1_users_path, params: invalid_params

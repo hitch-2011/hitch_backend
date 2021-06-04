@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :friends
   has_many :rides, dependent: :destroy
-  has_one :vehicle, dependent: :destroy
+  has_many :vehicles, dependent: :destroy
   validates :password, presence: { require: true }
   validates :fullname, presence: { require: true }
   validates :password, presence: { require: true }
