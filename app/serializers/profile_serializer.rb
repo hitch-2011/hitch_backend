@@ -4,8 +4,7 @@ class ProfileSerializer
              :email,
              :bio,
              :user_rides,
-             :matched_rides,
-             :friends,
+             :friendship_status,
              :vehicle,
              :ride_days 
 end
