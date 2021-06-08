@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :friends
+  has_many :friends, ->(user) { where("receiver_id = ? OR requestor_id = ?", user.id, user.id) }
   has_many :rides, dependent: :destroy
   has_many :vehicles, dependent: :destroy
   validates :password, presence: { require: true }
@@ -21,5 +21,9 @@ class User < ApplicationRecord
     array << user.id
     array << user.friends.pluck(:friend_id)
     array.flatten
+  end
+
+  def friendships
+    Friend.where("receiver_id = #{self.id} OR requestor_id = #{self.id}")
   end
 end

@@ -3,9 +3,7 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.create!(user_params)
-    # @vehicle = Vehicle.create!(user_id: @user.id, make: params[:make], model: params[:model], year: params[:year] )
     if @user.save 
-      # && @vehicle.save
       created_user = UserSerializer.new(@user)
       render json: created_user
     else
