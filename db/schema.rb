@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(version: 2021_05_19_222812) do
   enable_extension "plpgsql"
 
   create_table "friends", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "friend_id"
+    t.bigint "receiver_id"
+    t.bigint "requestor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
-    t.index ["friend_id"], name: "index_friends_on_friend_id"
-    t.index ["user_id"], name: "index_friends_on_user_id"
+    t.index ["receiver_id"], name: "index_friends_on_receiver_id"
+    t.index ["requestor_id"], name: "index_friends_on_requestor_id"
   end
 
   create_table "ridedays", force: :cascade do |t|
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 2021_05_19_222812) do
     t.index ["user_id"], name: "index_vehicles_on_user_id"
   end
 
-  add_foreign_key "friends", "users"
-  add_foreign_key "friends", "users", column: "friend_id"
+  add_foreign_key "friends", "users", column: "receiver_id"
+  add_foreign_key "friends", "users", column: "requestor_id"
   add_foreign_key "ridedays", "rides"
   add_foreign_key "rides", "users"
   add_foreign_key "vehicles", "users"
