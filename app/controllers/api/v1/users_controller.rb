@@ -12,8 +12,9 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
+    profile_id = params[;profile_id]
     user = User.find(params[:id])
-    profile = Profile.new(user)
+    profile = Profile.new(user, profile_id)
     render json: ProfileSerializer.new(profile)
   end
 
