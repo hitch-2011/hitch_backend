@@ -13,8 +13,8 @@ Rails.application.routes.draw do
         get '/:id/rides', to: 'rides#index'
 
         post '/:id/friends', to: 'friends#create'
-
         delete '/:id/friends/:friend_id', to: 'friends#destroy'
+        patch '/:id/friends/:friend_id', to: 'friends#update'
 
         get '/:id/friends', to: 'friends#index'
 

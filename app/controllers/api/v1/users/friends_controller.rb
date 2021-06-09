@@ -12,6 +12,13 @@ class Api::V1::Users::FriendsController < ApplicationController
   def destroy
     Friend.destroy(params[:friend_id])
     render json: { message: "Friendship denied." }, status: 200
+  end
+
+  def update
+    friend = Friend.find(params[:friend_id])
+    friend.update!(status: 1)
+    render json: { message: "Friendship approved" }, status: 200
+  end
 
   def index 
     user = User.find(params[:id])
