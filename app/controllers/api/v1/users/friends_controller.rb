@@ -8,8 +8,21 @@ class Api::V1::Users::FriendsController < ApplicationController
     render json: ProfileSerializer.new(profile)
   end
 
+
   def destroy
     Friend.destroy(params[:friend_id])
     render json: { message: "Friendship denied." }, status: 200
+
+  def index 
+    user = User.find(params[:id])
+    received_requests = user.friendships.find_all{|friend| friend.status == 'pending' && friend.receiver_id == user.id}
+    received_requests_users = received_requests.map{|friend| User.find(friend.requestor_id)}
+    if received_requests.empty?
+      render json: { message: ["no received requests"] }
+    else
+      requested = []
+      received_requests_users.each{|user| requested << ReceivedRequests.new(user)}
+      render json: RequestSerializer.new(requested)
+    end
   end
 end

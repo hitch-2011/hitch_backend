@@ -13,7 +13,11 @@ Rails.application.routes.draw do
         get '/:id/rides', to: 'rides#index'
 
         post '/:id/friends', to: 'friends#create'
+
         delete '/:id/friends/:friend_id', to: 'friends#destroy'
+
+        get '/:id/friends', to: 'friends#index'
+
         post '/:id/vehicles', to: 'vehicles#create', as: 'vehicle_path'
       end
     end
