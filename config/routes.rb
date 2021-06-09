@@ -13,6 +13,8 @@ Rails.application.routes.draw do
         get '/:id/rides', to: 'rides#index'
 
         post '/:id/friends', to: 'friends#create'
+        get '/:id/friends', to: 'friends#index'
+
         post '/:id/vehicles', to: 'vehicles#create', as: 'vehicle_path'
       end
     end
