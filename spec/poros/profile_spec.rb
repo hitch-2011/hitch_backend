@@ -15,7 +15,7 @@ describe 'Profile Poro' do
       friends1 = Friend.create!(requestor_id: jake.id, receiver_id: dominic.id, status: 1)
       friends2 = Friend.create!(requestor_id: jake.id, receiver_id: cydnee.id, status: 1)
       friends3 = Friend.create!(requestor_id: dominic.id, receiver_id: cydnee.id, status: 1)
-      
+
 
       pinto    = Vehicle.create!(user_id: dominic.id, make: 'make', model: 'model', year: '1991')
       geometro = Vehicle.create!(user_id: cydnee.id, make: 'make', model: 'model', year: '1992')
@@ -37,7 +37,7 @@ describe 'Profile Poro' do
       expect(profile.bio).to eq(dominic.bio)
       expect(profile.email).to eq(dominic.email)
       expect(profile.user_rides.first).to eq(ride3)
-      expect(profile.friendship_status).to eq("self")
+      expect(profile.friendship_status).to eq(["self", dominic.id])
       expect(profile.vehicle.first).to eq(pinto)
       expect(profile.ride_days).to eq(["monday", "wednesday", "thursday"])
     end
@@ -53,7 +53,7 @@ describe 'Profile Poro' do
       friends1 = Friend.create!(requestor_id: jake.id, receiver_id: dominic.id, status: 1)
       friends2 = Friend.create!(requestor_id: jake.id, receiver_id: cydnee.id, status: 1)
       friends3 = Friend.create!(requestor_id: dominic.id, receiver_id: cydnee.id)
-      
+
 
       pinto    = Vehicle.create!(user_id: dominic.id, make: 'make', model: 'model', year: '1991')
       geometro = Vehicle.create!(user_id: cydnee.id, make: 'make', model: 'model', year: '1992')
@@ -69,10 +69,10 @@ describe 'Profile Poro' do
       rideday8 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride3.id)
       rideday9 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride3.id)
       profile = Profile.new(jake, dominic.id)
-      
+
       expect(profile.bio).to eq(jake.bio)
       expect(profile.email).to eq(jake.email)
-      expect(profile.friendship_status).to eq("approved")
+      expect(profile.friendship_status).to eq(["approved", jake.email])
     end
     it 'shows profile information on someone elses page and friendship is approve/deny' do
       dominic  = User.create!(fullname: "fullname", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
@@ -86,7 +86,7 @@ describe 'Profile Poro' do
       friends1 = Friend.create!(requestor_id: jake.id, receiver_id: dominic.id, status: 1)
       friends2 = Friend.create!(requestor_id: jake.id, receiver_id: cydnee.id, status: 1)
       friends3 = Friend.create!(requestor_id: cydnee.id, receiver_id: dominic.id)
-      
+
 
       pinto    = Vehicle.create!(user_id: dominic.id, make: 'make', model: 'model', year: '1991')
       geometro = Vehicle.create!(user_id: cydnee.id, make: 'make', model: 'model', year: '1992')
@@ -102,10 +102,10 @@ describe 'Profile Poro' do
       rideday8 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride3.id)
       rideday9 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride3.id)
       profile = Profile.new(dominic, cydnee.id)
-      
+
       expect(profile.bio).to eq(dominic.bio)
       expect(profile.email).to eq(dominic.email)
-      expect(profile.friendship_status).to eq("approve/deny")
+      expect(profile.friendship_status).to eq(["pending", friends3.id])
     end
     it 'shows profile information on someone elses page and friendship is approve/deny' do
       dominic  = User.create!(fullname: "fullname", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
@@ -119,7 +119,7 @@ describe 'Profile Poro' do
       friends1 = Friend.create!(requestor_id: jake.id, receiver_id: dominic.id, status: 1)
       friends2 = Friend.create!(requestor_id: jake.id, receiver_id: cydnee.id, status: 1)
       friends3 = Friend.create!(requestor_id: dominic.id, receiver_id: cydnee.id)
-      
+
 
       pinto    = Vehicle.create!(user_id: dominic.id, make: 'make', model: 'model', year: '1991')
       geometro = Vehicle.create!(user_id: cydnee.id, make: 'make', model: 'model', year: '1992')
@@ -135,10 +135,10 @@ describe 'Profile Poro' do
       rideday8 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride3.id)
       rideday9 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride3.id)
       profile = Profile.new(dominic, cydnee.id)
-      
+
       expect(profile.bio).to eq(dominic.bio)
       expect(profile.email).to eq(dominic.email)
-      expect(profile.friendship_status).to eq("pending")
+      expect(profile.friendship_status).to eq(["approve/deny", friends3.id])
     end
     it 'shows profile information on someone elses page and friendship is approve/deny' do
       dominic  = User.create!(fullname: "fullname", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
@@ -166,10 +166,10 @@ describe 'Profile Poro' do
       rideday8 = Rideday.create!(day_of_week: 'Wednesday', ride_id: ride3.id)
       rideday9 = Rideday.create!(day_of_week: 'Thursday', ride_id: ride3.id)
       profile = Profile.new(dominic, cydnee.id)
-      
+
       expect(profile.bio).to eq(dominic.bio)
       expect(profile.email).to eq(dominic.email)
-      expect(profile.friendship_status).to eq("add")
+      expect(profile.friendship_status).to eq(["add", dominic.id])
     end
   end
 end
