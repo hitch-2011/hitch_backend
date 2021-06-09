@@ -29,7 +29,7 @@ RSpec.describe 'Api::V1::Users Show', type: :request do
       check_hash_structure(profile_details[:data][:attributes], :email, String)
       check_hash_structure(profile_details[:data][:attributes], :bio, String)
       expect(profile_details[:data][:attributes][:bio]).to eq("#{user1.bio}")
-      expect(profile_details[:data][:attributes][:friendship_status]).to eq("self")
+      expect(profile_details[:data][:attributes][:friendship_status]).to eq(["self", user1.id])
       expect(profile_details[:data][:attributes][:vehicle].first[:id]).to eq(vehicle1.id)
       check_hash_structure(profile_details[:data][:attributes], :user_rides, Array)
       profile_details[:data][:attributes][:user_rides].each do |ride|
@@ -47,16 +47,16 @@ RSpec.describe 'Api::V1::Users Show', type: :request do
       vehicle1 = Vehicle.create(make: 'Hyundai', model: 'Sonata', year: '2013', user_id: user1.id)
       user2 = User.create!(fullname: "fullname", email: "jake@gmail.com", password: "password", bio: "I like driving.")
       user3 = User.create!(fullname: "fullname", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
-      
-      @ride = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user1.id )
+
+      @ride = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user2.id )
       rideday = Rideday.create!(day_of_week: 'Monday', ride_id: @ride.id)
       rideday2 = Rideday.create!(day_of_week: 'Wednesday', ride_id: @ride.id)
       rideday3 = Rideday.create!(day_of_week: 'Thursday', ride_id: @ride.id)
       get "/api/v1/users/#{user1.id}?profile_id=#{user2.id}"
       expect(response).to be_successful
       profile_details = JSON.parse(response.body, symbolize_names:true)
-      
-      expect(profile_details[:data][:attributes][:friendship_status]).to eq("add")
+
+      expect(profile_details[:data][:attributes][:friendship_status]).to eq(["add", user2.id])
     end
     it 'should return other persons info and pending if logged in user requested friendship' do
       user1 = User.create(fullname: "fullname", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
@@ -64,15 +64,15 @@ RSpec.describe 'Api::V1::Users Show', type: :request do
       user2 = User.create!(fullname: "fullname", email: "jake@gmail.com", password: "password", bio: "I like driving.")
       user3 = User.create!(fullname: "fullname", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
       friend = Friend.create!(requestor_id: user1.id, receiver_id: user2.id)
-      @ride = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user1.id )
+      @ride = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user2.id )
       rideday = Rideday.create!(day_of_week: 'Monday', ride_id: @ride.id)
       rideday2 = Rideday.create!(day_of_week: 'Wednesday', ride_id: @ride.id)
       rideday3 = Rideday.create!(day_of_week: 'Thursday', ride_id: @ride.id)
       get "/api/v1/users/#{user1.id}?profile_id=#{user2.id}"
       expect(response).to be_successful
       profile_details = JSON.parse(response.body, symbolize_names:true)
-      
-      expect(profile_details[:data][:attributes][:friendship_status]).to eq("pending")
+
+      expect(profile_details[:data][:attributes][:friendship_status]).to eq(["pending", friend.id])
     end
     it 'should return other persons info and approve/deny if logged in user received friendship request' do
       user1 = User.create(fullname: "fullname", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
@@ -80,15 +80,15 @@ RSpec.describe 'Api::V1::Users Show', type: :request do
       user2 = User.create!(fullname: "fullname", email: "jake@gmail.com", password: "password", bio: "I like driving.")
       user3 = User.create!(fullname: "fullname", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
       friend = Friend.create!(requestor_id: user2.id, receiver_id: user1.id)
-      @ride = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user1.id )
+      @ride = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user2.id )
       rideday = Rideday.create!(day_of_week: 'Monday', ride_id: @ride.id)
       rideday2 = Rideday.create!(day_of_week: 'Wednesday', ride_id: @ride.id)
       rideday3 = Rideday.create!(day_of_week: 'Thursday', ride_id: @ride.id)
       get "/api/v1/users/#{user1.id}?profile_id=#{user2.id}"
       expect(response).to be_successful
       profile_details = JSON.parse(response.body, symbolize_names:true)
-      
-      expect(profile_details[:data][:attributes][:friendship_status]).to eq("approve/deny")
+
+      expect(profile_details[:data][:attributes][:friendship_status]).to eq(["approve/deny", friend.id])
     end
     it 'should return other persons info and approved if friendship is approved' do
       user1 = User.create(fullname: "fullname", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
@@ -96,15 +96,15 @@ RSpec.describe 'Api::V1::Users Show', type: :request do
       user2 = User.create!(fullname: "fullname", email: "jake@gmail.com", password: "password", bio: "I like driving.")
       user3 = User.create!(fullname: "fullname", email: "cydnee@gmail.com", password: "password", bio: "I like driving.")
       friend = Friend.create!(requestor_id: user2.id, receiver_id: user1.id, status: 1)
-      @ride = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user1.id )
+      @ride = Ride.create!(origin: "3300 S Tamarac Dr, Denver, CO 80231, USA", destination: "1125 S Kalispell St, Aurora, CO 80017, USA", departure_time: "9:00am", user_id: user2.id )
       rideday = Rideday.create!(day_of_week: 'Monday', ride_id: @ride.id)
       rideday2 = Rideday.create!(day_of_week: 'Wednesday', ride_id: @ride.id)
       rideday3 = Rideday.create!(day_of_week: 'Thursday', ride_id: @ride.id)
       get "/api/v1/users/#{user1.id}?profile_id=#{user2.id}"
       expect(response).to be_successful
       profile_details = JSON.parse(response.body, symbolize_names:true)
-      
-      expect(profile_details[:data][:attributes][:friendship_status]).to eq("approved")
+
+      expect(profile_details[:data][:attributes][:friendship_status]).to eq(["approved", user2.email])
     end
   end
 
@@ -125,7 +125,7 @@ RSpec.describe 'Api::V1::Users Show', type: :request do
       user1 = User.create!(fullname: "fullname", email: "dominic@gmail.com", password: "password", bio: "I like driving.")
       get "/api/v1/users/1000000000000"
       profile_details = JSON.parse(response.body, symbolize_names:true)
-      expect(profile_details[:error]).to eq("Couldn't find User with 'id'=1000000000000")
+      expect(profile_details[:error]).to eq("Couldn't find User without an ID")
     end
 
     it 'breaks when it is empty string' do
